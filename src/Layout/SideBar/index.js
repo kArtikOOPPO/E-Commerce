@@ -13,6 +13,8 @@ import PersonSharpIcon from "@mui/icons-material/PersonSharp";
 import SwitchAccountSharpIcon from "@mui/icons-material/SwitchAccountSharp";
 import SupervisedUserCircleSharpIcon from "@mui/icons-material/SupervisedUserCircleSharp";
 import DisplaySettingsSharpIcon from "@mui/icons-material/DisplaySettingsSharp";
+import BookIcon from "@mui/icons-material/Book";
+import InfoIcon from '@mui/icons-material/Info';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useDispatch, useSelector } from "react-redux";
 import { setDrawer } from "../Header/storeState";
@@ -28,11 +30,13 @@ export const SideBar = ({ navList }) => {
    BecameaSeller: <SupervisedUserCircleSharpIcon sx={{ mr: 1 }} color="blue" />,
    More: <DisplaySettingsSharpIcon sx={{ mr: 1 }} color="blue" />,
    Cart: <ShoppingCartIcon sx={{ mr: 1 }} color="blue" />,
+   AboutUs: <InfoIcon sx={{ mr: 1 }} color="blue" />,
+   Blog: <BookIcon sx={{ mr: 1 }} color="blue" />,
  };
  const IconDisplay = ({item})=>{
    return IconWithTitle[item.replace(/\s/g, "")];
  }
-
+ const sidebarList= ['Blog', 'About Us']
   return (
     <Box component="nav">
       <Drawer
@@ -66,7 +70,7 @@ export const SideBar = ({ navList }) => {
 
           <Divider />
           <List>
-            {navList.map((item) => (
+            {[...navList, ...sidebarList].map((item) => (
               <ListItem key={item} disablePadding>
                 <ListItemButton sx={{ textAlign: "left" }}>
                   <IconDisplay item={item} />

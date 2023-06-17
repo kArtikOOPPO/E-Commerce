@@ -10,7 +10,8 @@ import {
   CardActions,
   Button,
   Box,
-} from "@mui/material";
+} from "@mui/material"; 
+import SwiperComponent from "./Carasoule";
 
 const Contained = [
   {
@@ -47,7 +48,7 @@ const Contained = [
 export const Dashboard = () => {
   return (
     <Page>
-      <Container >
+      <Container style={{ maxWidth: "none" }}>
         <Stack
           direction={{ xs: "column", sm: "row", md: "row" }}
           alignItems="center"
@@ -69,7 +70,7 @@ export const Dashboard = () => {
             Hi, Welcome back
           </Typography>
         </Stack>
-
+        <SwiperComponent />
         <Grid
           sx={{ display: "flex", justifyContent: "center" }}
           container
@@ -113,7 +114,7 @@ export const Dashboard = () => {
                       },
                       textOverflow: "ellipsis",
                       whiteSpace: "nowrap",
-                      maxWidth:{sm:200, xs: 150}, // Set your desired maximum width
+                      maxWidth: { sm: 200, xs: 150 }, // Set your desired maximum width
                     }}
                     variant="h5"
                     component="div"
@@ -129,7 +130,7 @@ export const Dashboard = () => {
                       mb: 1.5,
                       textOverflow: "ellipsis",
                       whiteSpace: "nowrap",
-                      maxWidth:{sm:200, xs: 150}, // Set your desired maximum width
+                      maxWidth: { sm: 200, xs: 150 }, // Set your desired maximum width
                     }}
                     color="text.secondary"
                     nowrap
@@ -143,7 +144,7 @@ export const Dashboard = () => {
                       },
                       textOverflow: "ellipsis",
                       whiteSpace: "nowrap",
-                      maxWidth:{sm:200, xs: 150}, // Set your desired maximum width
+                      maxWidth: { sm: 200, xs: 150 }, // Set your desired maximum width
                     }}
                     variant="body2"
                     nowrap
@@ -161,7 +162,7 @@ export const Dashboard = () => {
                       textTransform: "none",
                       textOverflow: "ellipsis",
                       whiteSpace: "nowrap",
-                      maxWidth:{sm:200, xs: 150}, // Set your desired maximum width
+                      maxWidth: { sm: 200, xs: 150 }, // Set your desired maximum width
                     }}
                   >
                     Learn More

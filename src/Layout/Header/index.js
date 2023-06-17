@@ -7,10 +7,13 @@ import {
   Toolbar,
   Typography,
   Button,
+  TextField,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import SearchIcon from "@mui/icons-material/Search";
 import ThreePIcon from "@mui/icons-material/ThreeP";
+import Autocomplete from "@mui/material/Autocomplete";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setDrawer } from "./storeState";
@@ -24,13 +27,10 @@ export default function DrawerAppBar(props) {
   const drawerState = useSelector(({ header }) => header?.drawer);
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", position: "sticky", top: 0,height: '100px',zIndex: 2 }}>
       <CssBaseline />
-      <AppBar
-        component="nav"
-        sx={{ backgroundColor: "black", position: "sticky", top: 0 }}
-      >
-        <Toolbar>
+      <AppBar component="nav" sx={{ backgroundColor: "#537188" }}>
+        <Toolbar sx={{ flexWrap: { xs: "wrap", sm: "nowrap" } }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -46,6 +46,7 @@ export default function DrawerAppBar(props) {
           >
             <MenuIcon />
           </IconButton>
+
           <Typography
             variant="h6"
             component="div"
@@ -60,6 +61,38 @@ export default function DrawerAppBar(props) {
           >
             My Mom & Dad
           </Typography>
+          <Autocomplete
+            freeSolo
+            id="free-solo-2-demo"
+            disableClearable
+            size="small"
+            sx={{
+              backgroundColor: "white",
+              minWidth: { sm: 150, md: 300, lg: 400 },
+              mx: { sm: 2, md: 6 },
+              borderRadius: "5px",
+              display: { xs: "none", sm: "block", md: "block" },
+            }}
+            options={navItems.map((option) => option)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                // label="Search input"
+                placeholder="Search"
+                InputProps={{
+                  ...params.InputProps,
+                  endAdornment: (
+                    <>
+                      <SearchIcon sx={{ color: "#537188", ml: 1 }} />
+                      {params.InputProps.startAdornment}
+                    </>
+                  ),
+                  type: "search",
+                }}
+              />
+            )}
+          />
+
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
               <Button key={item} sx={{ color: "#fff", textTransform: "none" }}>
@@ -90,8 +123,40 @@ export default function DrawerAppBar(props) {
               </IconButton>
             ))}
           </Box>
+          <Autocomplete
+            freeSolo
+            id="free-solo-2-demo"
+            disableClearable
+            size="small"
+            sx={{
+              backgroundColor: "white",
+              my: "5px",
+              borderRadius: "5px",
+              width: "100%",
+              display: { xs: "block", sm: "none" },
+            }}
+            options={navItems.map((option) => option)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                // label="Search input"
+                placeholder="Search"
+                InputProps={{
+                  ...params.InputProps,
+                  endAdornment: (
+                    <>
+                      <SearchIcon sx={{ color: "#537188", ml: 1 }} />
+                      {params.InputProps.startAdornment}
+                    </>
+                  ),
+                  type: "search",
+                }}
+              />
+            )}
+          />
         </Toolbar>
       </AppBar>
+
       <SideBar navList={navItems} />
     </Box>
   );
