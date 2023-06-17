@@ -14,10 +14,7 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-       
           <DrawerAppBar />
-        
-
         <Dashboard />
       </ThemeProvider>
     </div>
